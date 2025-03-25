@@ -2,16 +2,14 @@
 #include <time.h>
 #include <stdio.h>
 
-int main()
-{
+int main() {
     int num1, num2, resultado;
     char operador;
 
     printf("Ingrese la operacion (num operador num) ");
     scanf("%d %c %d", &num1, &operador, &num2);
 
-    switch (operador)
-    {
+    switch (operador) {
     case '+':
         resultado = num1 + num2;
         printf("La suma es: %d\n", resultado);
