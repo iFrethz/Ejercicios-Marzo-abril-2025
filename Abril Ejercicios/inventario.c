@@ -56,7 +56,8 @@ int main() {
             printf("\nSaliendo del programa...");
             break;
         default:
-            printf("\nOpción no valida");
+            printf("\nOpción no valida... Espere 3 segundos\n");
+            sleep(3);
             break;
     }
     } while (select != 3);
