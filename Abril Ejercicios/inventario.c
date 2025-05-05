@@ -6,27 +6,37 @@ struct producto{
 };
 
 void agregar() {
-    struct producto p;
+    struct producto p[100];
     char seguir;
+    int contador = 1;
+    
+    if (contador > 100) {
+        printf("No puedes exceder el limite de 100 productos.");
+    }
+    
     do {
-        printf("\nAgregar un producto\n");
+        printf("\nAgregar el %d° producto\n", contador);
         printf("---------------------\n");
         printf("Nombre: ");
-        scanf("%s", p.nombre);
+        scanf("%s", p[contador].nombre);
         printf("Precio: ");
-        scanf("%d", &p.precio);
+        scanf("%d", &p[contador].precio);
         printf("Cantidad: ");
-        scanf("%d", &p.cantidad);
+        scanf("%d", &p[contador].cantidad);
         printf("---------------------\n");
+        
+        contador++;
+        
         printf("Desea seguir agregando productos (s/n): ");
         scanf(" %c", &seguir);
     } while (seguir == 's' || seguir == 'S');
 }
 
 int main() {
-    struct producto nuevoProducto[50];
     int select;
-    printf("Gestión de inventario\n");
+    
+    do {
+    printf("\nGestión de inventario\n");
     printf("----------------------\n");
     printf("1.- Agregar Productos\n");
     printf("2.- Mostrar Productos\n");
@@ -40,15 +50,14 @@ int main() {
             agregar();
             break;
         case 2:
-            printf("eleccion 2");
+            printf("Select 2");
             break;
         case 3:
-            printf("Saliendo del programa...");
+            printf("\nSaliendo del programa...");
             break;
         default:
-            printf("Opción no valida");
+            printf("\nOpción no valida");
             break;
     }
-    
-    return 0;
+    } while (select != 3);
 }
