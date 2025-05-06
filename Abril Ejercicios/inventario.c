@@ -5,17 +5,17 @@ struct producto{
     int precio, cantidad;
 };
 
+struct producto p[100];
+int contador = 0;
+
 void agregar() {
-    struct producto p[100];
     char seguir;
-    int contador = 1;
     
     if (contador > 100) {
         printf("No puedes exceder el limite de 100 productos.");
-    }
-    
-    do {
-        printf("\nAgregar el %d° producto\n", contador);
+    } else {
+         do {
+        printf("\nAgregar el %d° producto\n", contador + 1);
         printf("---------------------\n");
         printf("Nombre: ");
         scanf("%s", p[contador].nombre);
@@ -29,12 +29,25 @@ void agregar() {
         
         printf("Desea seguir agregando productos (s/n): ");
         scanf(" %c", &seguir);
-    } while (seguir == 's' || seguir == 'S');
+    } while (seguir == 's' || seguir == 'S');   
+    }
+}
+
+
+void mostrar() {
+    printf("\nLista de los productos\n");
+    printf("========================\n");
+    for(int i = 0; i < contador; i++){
+        printf("%d° Producto\n", i + 1);
+        printf("Nombre: %s\n", p[i].nombre);
+        printf("Precio: %d\n", p[i].precio);
+        printf("Cantidad: %d\n", p[i].cantidad);
+        printf("......................\n");
+    }
 }
 
 int main() {
     int select;
-    
     do {
     printf("\nGestión de inventario\n");
     printf("----------------------\n");
@@ -50,7 +63,9 @@ int main() {
             agregar();
             break;
         case 2:
-            printf("Select 2");
+            mostrar();
+            printf("Se congelo el listado por 5 segundos...\n");
+            sleep(5);
             break;
         case 3:
             printf("\nSaliendo del programa...");
